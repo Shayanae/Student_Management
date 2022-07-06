@@ -2,7 +2,9 @@ package beans.menu;
 
 import beans.Check;
 import beans.services.DisplayStudent;
+import beans.services.Student;
 
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Scanner;
 
@@ -11,9 +13,12 @@ public class MenuManagement {
     Check checkClass = new Check();
     DisplayMenu displayMenu = new DisplayMenu();
     DisplayStudent displayStudent = new DisplayStudent();
+    Student student = new Student();
+    ResultSet res;
+    private boolean check;
     public void homeManagement(Statement stmt){
         int choice;
-        boolean check;
+
         String tempChoice;
         char[] cChoice;
 
@@ -33,6 +38,7 @@ public class MenuManagement {
                     displayStudent.all(stmt);
                     break;
                 case 3:
+                    student.changeInfo(stmt);
                     break;
                 case 5:
                     break;

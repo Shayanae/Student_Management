@@ -9,9 +9,10 @@ public class Faculty {
         try{
             switch (choice){
                 case 1:
-                    res = stmt.executeQuery("SELECT s.id, s.lastname, s.firstname " +
-                        "FROM student s " +
-                        "WHERE s.faculty = 'Electronique';");
+                    res = stmt.executeQuery("SELECT s.id, s.lastname, s.firstname, f.fname" +
+                        "FROM student s, faculty f " +
+                        "WHERE f.name = 'Electronique'" +
+                        "AND s.faculty = f.id;");
                     while (res.next()){
                         System.out.print("ID: " + res.getInt("id"));
                         System.out.print(", Nom: " + res.getString("lastname"));

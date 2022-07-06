@@ -20,4 +20,19 @@ public class DisplayMenu {
         System.out.println();
         System.out.println("Entrez votre choix: ");
     }
+    public void changeInfo(){
+        System.out.println("Que voulez vous modifiez?");
+        System.out.println();
+        System.out.println("* * * * * * * * * * * * *");
+        System.out.println("*                       *");
+        System.out.println("*     1. Le nom.        *");
+        System.out.println("*                       *");
+        System.out.println("*     2. Le prénom.     *");
+        System.out.println("*                       *");
+        System.out.println("*     3. Les deux.      *");
+        System.out.println("*                       *");
+        System.out.println("* * * * * * * * * * * * *");
+        System.out.println();
+        System.out.println("Entrez votre choix: ");
+    }
 }
