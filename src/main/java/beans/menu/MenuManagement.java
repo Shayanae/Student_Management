@@ -44,6 +44,7 @@ public class MenuManagement {
                     student.add(stmt);
                     break;
                 case 5:
+                    student.delete(stmt);
                     break;
                 case 6:
                     System.out.println("Au revoir");

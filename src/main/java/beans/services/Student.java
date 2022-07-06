@@ -19,6 +19,7 @@ public class Student {
     Scanner sc = new Scanner(System.in);
     ResultSet res;
     Faculty faculty = new Faculty();
+    DisplayStudent displayStudent = new DisplayStudent();
     public void changeInfo(Statement stmt){
         try{
             do {
@@ -126,5 +127,37 @@ public class Student {
             res = stmt.executeQuery("INSERT INTO student VALUES ("+ id +", '" + lastname + "', '" +
                     firstname + "', " + nbFaculty + ");");
         }catch (Exception e){System.out.println("Beug addStuden");}
+    }
+
+    public void delete(Statement stmt){
+        String tempId;
+        char[] cId;
+        int id;
+        boolean flag = false;
+
+        try{
+            do {
+                do {
+                    displayStudent.all(stmt);
+                    System.out.println("Entrer l'id de l'étudiant que vous voulez supprimer.");
+                    tempId = sc.nextLine();
+                    cId = tempId.toCharArray();
+                    check = checkClass.cInt(cId);
+                }while (!check);
+                id = Integer.parseInt(tempId);
+                res = stmt.executeQuery("SELECT s.id " +
+                        "FROM student s;");
+                while (res.next() && !flag){
+                    if (res.getInt("id")==id){
+                        flag = true;
+                    }
+                }
+                if (!flag){
+                    System.out.println("Cet ID n'existe pas");
+                }
+            }while (!flag);
+            res = stmt.executeQuery("DELETE FROM student " +
+                    "WHERE id = " + id + ";");
+        }catch (Exception e){System.out.println("Beug delete Student");}
     }
 }
