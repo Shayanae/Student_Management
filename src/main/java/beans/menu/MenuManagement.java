@@ -30,6 +30,7 @@ public class MenuManagement {
                     displayStudent.byFaculty(stmt);
                     break;
                 case 2:
+                    displayStudent.all(stmt);
                     break;
                 case 3:
                     break;

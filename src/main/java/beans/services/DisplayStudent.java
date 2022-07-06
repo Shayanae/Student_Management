@@ -36,4 +36,16 @@ public class DisplayStudent {
             }while (choice!=1 && choice!=2);
         }catch (Exception e){System.out.println("Beug byFaculty");}
     }
+
+    public void all(Statement stmt){
+        try{
+            res = stmt.executeQuery("SELECT * FROM student;");
+            while (res.next()){
+                System.out.print("ID: " + res.getInt("id"));
+                System.out.print(", Nom: " + res.getString("lastname"));
+                System.out.print(", Prénom: " + res.getString("firstname"));
+                System.out.println(", Filière: " + res.getString("faculty"));
+            }
+        }catch (Exception e){System.out.println("Beug Faculty all");}
+    }
 }
