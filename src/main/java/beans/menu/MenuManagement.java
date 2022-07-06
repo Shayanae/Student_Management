@@ -40,6 +40,9 @@ public class MenuManagement {
                 case 3:
                     student.changeInfo(stmt);
                     break;
+                case 4:
+                    student.add(stmt);
+                    break;
                 case 5:
                     break;
                 case 6:

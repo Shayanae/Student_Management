@@ -6,6 +6,7 @@ import beans.menu.MenuManagement;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Student {
@@ -17,6 +18,7 @@ public class Student {
     DisplayMenu displayMenu = new DisplayMenu();
     Scanner sc = new Scanner(System.in);
     ResultSet res;
+    Faculty faculty = new Faculty();
     public void changeInfo(Statement stmt){
         try{
             do {
@@ -91,5 +93,38 @@ public class Student {
                     System.out.println("Veuillez choisir l'un des chiffres proposer.");
             }
         }catch (Exception e){System.out.println("Beug change info MenuManagement");}
+    }
+
+    public void add(Statement stmt){
+        Random random = new Random();
+        boolean flag = false;
+        int id, nbFaculty;
+        String lastname, firstname;
+        try {
+            do {
+                id = 99999 + random.nextInt(1000000 - 99999);
+                res = stmt.executeQuery("SELECT s.id " +
+                        "FROM student s");
+                while (res.next()){
+                    if (res.getInt("id")==id){
+                        flag = true;
+                    }
+                }
+                check = !flag;
+            } while (!check);
+            do {
+                System.out.println("Entrer son nom: ");
+                lastname = sc.nextLine();
+                check = checkClass.cString(lastname);
+            }while (!check);
+            do {
+                System.out.println("Entrer son prénom: ");
+                firstname = sc.nextLine();
+                check = checkClass.cString(firstname);
+            }while (!check);
+            nbFaculty = faculty.facultyAssignment(stmt);
+            res = stmt.executeQuery("INSERT INTO student VALUES ("+ id +", '" + lastname + "', '" +
+                    firstname + "', " + nbFaculty + ");");
+        }catch (Exception e){System.out.println("Beug addStuden");}
     }
 }
