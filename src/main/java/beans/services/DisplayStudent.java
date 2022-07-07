@@ -24,7 +24,7 @@ public class DisplayStudent {
 
     public void all(Statement stmt){
         try{
-            res = stmt.executeQuery("SELECT * FROM student;");
+            res = stmt.executeQuery("SELECT * FROM student ORDER BY id;");
             while (res.next()){
                 System.out.print("ID: " + res.getInt("id"));
                 System.out.print(", Nom: " + res.getString("lastname"));
