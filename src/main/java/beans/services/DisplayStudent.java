@@ -24,12 +24,15 @@ public class DisplayStudent {
 
     public void all(Statement stmt){
         try{
-            res = stmt.executeQuery("SELECT * FROM student ORDER BY id;");
+            res = stmt.executeQuery("SELECT s.id, s.lastname, s.firstname, f.name " +
+                    "FROM student s, faculty f " +
+                    "WHERE s.faculty = f.id " +
+                    "ORDER BY id;");
             while (res.next()){
                 System.out.print("ID: " + res.getInt("id"));
                 System.out.print(", Nom: " + res.getString("lastname"));
                 System.out.print(", Prénom: " + res.getString("firstname"));
-                System.out.println(", Filière: " + res.getString("faculty"));
+                System.out.println(", Filière: " + res.getString("name"));
             }
         }catch (Exception e){System.out.println("Beug Faculty all");}
     }

@@ -2,6 +2,7 @@ package beans.menu;
 
 import beans.Check;
 import beans.services.DisplayStudent;
+import beans.services.Faculty;
 import beans.services.Student;
 
 import java.sql.ResultSet;
@@ -14,7 +15,7 @@ public class MenuManagement {
     DisplayMenu displayMenu = new DisplayMenu();
     DisplayStudent displayStudent = new DisplayStudent();
     Student student = new Student();
-    ResultSet res;
+    Faculty faculty = new Faculty();
     private boolean check;
     public void homeManagement(Statement stmt){
         int choice;
@@ -32,7 +33,7 @@ public class MenuManagement {
             choice = Integer.parseInt(tempChoice);
             switch (choice){
                 case 1:
-                    displayStudent.byFaculty(stmt);
+                    faculty.facultyChoice(stmt);
                     break;
                 case 2:
                     displayStudent.all(stmt);

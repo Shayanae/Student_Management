@@ -16,9 +16,9 @@ public class Faculty {
                 choice = displayFaculty(stmt);
                 switch (choice) {
                     case 1:
-                        res = stmt.executeQuery("SELECT s.id, s.lastname, s.firstname, f.fname " +
+                        res = stmt.executeQuery("SELECT s.id, s.lastname, s.firstname, f.name " +
                                 "FROM student s, faculty f " +
-                                "WHERE f.fname = 'Electronique' " +
+                                "WHERE f.name = 'Electronique' " +
                                 "AND s.faculty = f.id " +
                                 "ORDER BY s.id;");
                         while (res.next()) {
@@ -28,9 +28,9 @@ public class Faculty {
                         }
                         break;
                     case 2:
-                        res = stmt.executeQuery("SELECT s.id, s.lastname, s.firstname, f.fname " +
+                        res = stmt.executeQuery("SELECT s.id, s.lastname, s.firstname, f.name " +
                                 "FROM student s, faculty f " +
-                                "WHERE f.fname = 'Informatique' " +
+                                "WHERE f.name = 'Informatique' " +
                                 "AND s.faculty = f.id " +
                                 "ORDER BY s.id;");
                         while (res.next()) {
@@ -55,7 +55,7 @@ public class Faculty {
                     case 1:
                         res = stmt.executeQuery("SELECT f.id " +
                                 "FROM faculty f " +
-                                "WHERE f.fname = 'Electronique';");
+                                "WHERE f.name = 'Electronique';");
                         while (res.next()){
                             nbFaculty = res.getInt("id");
                         }
@@ -63,7 +63,7 @@ public class Faculty {
                     case 2:
                         res = stmt.executeQuery("SELECT f.id " +
                                 "FROM faculty f " +
-                                "WHERE f.fname = 'Informatique';");
+                                "WHERE f.name = 'Informatique';");
                         while (res.next()){
                             nbFaculty = res.getInt("id");
                         }
@@ -85,10 +85,10 @@ public class Faculty {
         try {
             do {
                 count = 0;
-                res = stmt.executeQuery("SELECT f.fname FROM faculty f;");
+                res = stmt.executeQuery("SELECT f.name FROM faculty f;");
                 while (res.next()) {
                     count++;
-                    System.out.println(count + ": " + res.getString("fname"));
+                    System.out.println(count + ": " + res.getString("name"));
                 }
                 System.out.println("Pour quelle filière voulez vous affichez les étudiants?");
                 tempChoice = sc.nextLine();
